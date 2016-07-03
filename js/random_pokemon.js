@@ -14,7 +14,7 @@ function chooseRandom () {
 		$('#team').hide();
 		$('.loading').show();
 		$.ajax({
-			url: 'http://pokeapi.co/api/v2/pokedex/' + name,
+			url: 'https://pokeapi.co/api/v2/pokedex/' + name,
 			success: function (response) {
 				var max = response.pokemon_entries.length;
 				var team = [];
@@ -36,7 +36,7 @@ function loadDetails(team) {
 	var promises = [];
 	for (var i=0; i<6; i++) {
 		promises.push(
-			$.ajax({ url: 'http://pokeapi.co/api/v2/pokemon/' + team[i] })
+			$.ajax({ url: 'https://pokeapi.co/api/v2/pokemon/' + team[i] })
 		);
 	}
 

@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	$.ajax({
-		url: 'http://pokeapi.co/api/v2/pokedex/national',
+		url: 'https://pokeapi.co/api/v2/pokedex/national',
 		success: function (response) {
 			var pokemonArray = [];
 			$.each(response.pokemon_entries, function (i, item) {
@@ -33,7 +33,7 @@ function loadPokemon (name, index) {
 	var template = Handlebars.compile(source);
 
 	$.ajax({
-		url: 'http://pokeapi.co/api/v2/pokemon/' + name,
+		url: 'https://pokeapi.co/api/v2/pokemon/' + name,
 		success: function (response) {
 			var data = {
 				name: name,

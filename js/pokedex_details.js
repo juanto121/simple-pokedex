@@ -7,7 +7,7 @@ $(document).ready(function () {
 		var template = Handlebars.compile(source);
 
 		$.ajax({
-			url: 'http://pokeapi.co/api/v2/pokedex/' + name,
+			url: 'https://pokeapi.co/api/v2/pokedex/' + name,
 			success: function (response) {
 				var arrayPokemon = new Array();
 				$.each(response.pokemon_entries, function (i, item) {

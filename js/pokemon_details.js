@@ -7,7 +7,7 @@ $(document).ready(function () {
 		var template = Handlebars.compile(source);
 
 		$.ajax({
-			url: 'http://pokeapi.co/api/v2/pokemon/' + name,
+			url: 'https://pokeapi.co/api/v2/pokemon/' + name,
 			success: function (response) {
 				var data = {
 					front: response.sprites.front_default,
