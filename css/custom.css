@@ -1,0 +1,33 @@
+.name-field
+{
+	text-transform: capitalize;
+}
+
+.badge
+{
+	cursor: default;
+}
+
+.loading {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.description {
+	text-align: justify;
+}
+
+.chosen-container{
+	text-transform: capitalize;
+}
+
+/*Materialize CSS suggests this styles to make the footer Sticky*/
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}

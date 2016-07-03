@@ -17,6 +17,9 @@
 		<!-- Compiled and minified JavaScript -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
+		<!-- Handlebars -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
 		<link rel="stylesheet" href="css/custom.css">
 
 		<link rel='icon' href='favicon.ico' />
@@ -44,13 +47,54 @@
 		</nav>
 
 		<main>
-			<div class="container">
-				<h3>Welcome to the Simple Pokédex!</h3>
+			<div class="container" id="main">
+				<h3>Get a random Pokémon Team</h3>
+
 				<div class="row">
-					<div class="col s7 m5">
-					  	<img class="responsive-img" src="img/pokeball.png">
+					<div class="col s12 m8 input-field">
+						<select id="select-pokedex">
+							<option disabled selected>Pick a Pokédex</option>
+							<option value="national">National</option>
+							<option value="kanto">Kanto</option>
+							<option value="original-johto">Original Johto</option>
+							<option value="updated-johto">Updated Johto</option>
+							<option value="hoenn">Hoenn</option>
+							<option value="updated-hoenn">Updated Hoenn</option>
+							<option value="original-sinnoh">Original Sinnoh</option>
+							<option value="extended-sinnoh">Extended Sinnoh</option>
+							<option value="original-unova">Original Unova</option>
+							<option value="updated-unova">Updated Unova</option>
+							<option value="kalos-central">Central Kalos</option>
+							<option value="kalos-coastal">Coastal Kalos</option>
+							<option value="kalos-mountain">Mountain Kalos</option>
+						</select>
+						<a class="waves-effect waves-light btn indigo lighten-2" id="btn-go">Go!</a>
+					</div>
+
+					<div class="col s12 m4">
+						<img src="img/badges.png" class="responsive-img">
 					</div>
 				</div>
+
+				<div class="loading" hidden="hidden">
+					<div class="preloader-wrapper big active">
+						<div class="spinner-layer spinner-blue-only">
+							<div class="circle-clipper left">
+								<div class="circle"></div>
+							</div>
+							<div class="gap-patch">
+								<div class="circle"></div>
+							</div>
+							<div class="circle-clipper right">
+								<div class="circle"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row" id="team" hidden="hidden"></div>
+
+				<h5>Can you beat the Elite Four with this team?</h5>
 			</div>
 		</main>
 
@@ -76,6 +120,18 @@
 			</div>
 		</footer>
 
+		<!-- Handlebars template -->
+		<script id="team-template" type="text/x-handlebars-template">
+			{{#details}}
+			<div class="col s6 m4 l2">
+				<h5 id="pokemon-name" class="name-field">{{name}}</h5>
+				<img id="image-front" src="{{image}}">
+				<p><a href="pokemon_details.html?name={{name}}" target="_blank">View details</a></p>
+			</div>
+			{{/details}}
+		</script>
+
 		<script src="js/functions.js"></script>
+		<script src="js/random_pokemon.js"></script>
 	</body>
 </html>

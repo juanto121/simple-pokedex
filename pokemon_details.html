@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	   <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<!--Import Google Icon Font-->
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+		<!-- JQuery -->
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+		<!-- Handlebars -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+		<link rel="stylesheet" href="css/custom.css">
+
+		<link rel='icon' href='favicon.ico' />
+
+		<title>Simple Pokédex</title>
+	</head>
+	<body>
+		<nav class="indigo darken-1">
+			<div class="container">
+				<div class="nav-wrapper">
+					<a href="index.html" class="brand-logo">Simple Pokédex</a>
+					<ul class="right hide-on-med-and-down">
+						<li><a href="pokedex.html">Explore Pokédex</a></li>
+						<li><a href="random_pokemon.html">Random Pokémon Team</a></li>
+						<li><a href="compare.html">Compare Pokémon</a></li>
+					</ul>
+					<ul class="side-nav" id="mobile-menu">
+						<li><a href="pokedex.html">Explore Pokédex</a></li>
+						<li><a href="random_pokemon.html">Random Pokémon Team</a></li>
+						<li><a href="compare.html">Compare Pokémon</a></li>
+					</ul>
+					<a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+				</div>
+			</div>
+		</nav>
+
+		<main>
+			<div class="container" id="main">
+				<h3 id="pokemon-name" class="name-field"></h3>
+			</div>
+		</main>
+
+		<footer class="page-footer indigo">
+			<div class="container">
+				<div class="row">
+					<div class="col l6 s12">
+						<h5 class="white-text">Powered by the Pokéapi</h5>
+						<p class="grey-text text-lighten-4">
+							Check it out at <a href="http://pokeapi.co/" class="grey-text text-lighten-3" target="_blank">http://pokeapi.co/</a>
+						</p>
+					</div>
+					<div class="col l4 offset-l2 s12">
+						<h5 class="white-text">Find us on GitHub</h5>
+						<a class="grey-text text-lighten-3" href="#!">Link 1</a>
+					</div>
+				</div>
+			</div>
+			<div class="footer-copyright">
+				<div class="container">
+					© Juan Pablo Valencia,
+				</div>
+			</div>
+		</footer>
+
+		<!-- Handlebars template -->
+		<script id="details-template" type="text/x-handlebars-template">
+			<div class="row">
+				<div class="col s12 m6 l4">
+					<img id="image-front" src="{{front}}">
+					<img id="image-back" src="{{back}}">
+				</div>
+				<div class="col s12 m6 l2">
+					{{#types}}
+					<p><a class="btn badge {{color}}">{{name}}</a></p>
+					{{/types}}
+				</div>
+			</div>
+
+			<h5>National #{{number}}</h5>
+
+			<div class="row">
+				<div class="col s12 m6">
+					<h4>Abilities</h4>
+					<ul class="collapsible" data-collapsible="accordion" id="collapsible-ability">
+						{{#abilities}}
+						<li>
+							<div class="collapsible-header"><p class="name-field">{{name}}{{#if isHidden}}<span> (Hidden)</span>{{/if}}</p></div>
+							<div class="collapsible-body"><p id="ability-{{name}}" class="description"></p></div>
+						</li>
+						{{/abilities}}
+					</ul>
+				</div>
+				<div class="col s12 m6">
+					<h4>Base stats</h4>
+					{{#stats}}
+					<div class="row">
+						<div class="col s12 m3">
+							<strong><span class="name-field">{{name}}:</span></strong><span> {{value}}</span>
+						</div>
+						<div class="col s12 m9">
+							<div class="progress">
+								<div class="determinate" style="width: {{width}}%"></div>
+							</div>
+						</div>
+					</div>
+					{{/stats}}
+				</div>
+			</div>
+
+			<div class="row" id="row-moves">
+				<div class="col s12 m6">
+					<h4>Moves</h4>
+					<h6>A list of all the moves this Pokémon could potentially learn</h6>
+					<ul class="collapsible" data-collapsible="accordion" id="collapsible-move">
+						{{#moves}}
+						<li>
+							<div class="collapsible-header"><p class="name-field">{{name}}</p></div>
+							<div class="collapsible-body">
+								<p class="description">
+									<span id="move-{{name}}"></span><br>
+									<span id="power-{{name}}"><strong>Power: </strong></span><br>
+									<span id="accuracy-{{name}}"><strong>Accuracy: </strong></span>
+								</p>
+							</div>
+						</li>
+						{{/moves}}
+					</ul>
+				</div>
+				<div class="col s12 m6" id="div-defenses">
+					<h4>Defenses</h4>
+					<h6>The effect that different type moves have on this Pokémon</h6>
+				</div>
+			</div>
+		</script>
+
+		<!-- Handlebars template -->
+		<script id="defenses-template" type="text/x-handlebars-template">
+			{{#defenses}}
+			<p>
+				<a class="btn badge {{color}}">{{type}}</a>
+				<span> x {{value}}</span>
+			</p>
+			{{/defenses}}
+		</script>
+
+		<script src="js/functions.js"></script>
+		<script src="js/pokemon_details.js"></script>
+	</body>
+</html>
