@@ -13,3 +13,5 @@ Other tools used were:
 * [Materialize CSS](http://materializecss.com/)
 * [Handlebars](http://handlebarsjs.com/)
 * [Chosen](https://harvesthq.github.io/chosen/)
+
+Check it out at https://jpvg95.github.io/simple-pokedex/
