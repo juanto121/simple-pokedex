@@ -1,10 +1,10 @@
 $(document).ready(function () {
 	$('select').material_select();
 	$('main span').addClass('black-text');
-});
-
-$('#btn-go').click(function () {
-	chooseRandom();
+	
+	$('#btn-go').on('click', function () {
+		chooseRandom();
+	});
 });
 
 function chooseRandom () {
@@ -54,9 +54,5 @@ function loadDetails(team) {
 		$('#team').show();
 	}, function () {
 		//Handle errors
-		if (arguments[0].status === 404) {
-			//Bug, choose again
-			chooseRandom();
-		}
 	});
 }

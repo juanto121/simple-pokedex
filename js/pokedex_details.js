@@ -23,21 +23,21 @@ $(document).ready(function () {
 	} else {
 		window.location.replace('index.html');
 	}
-});
-
-$('#search').keyup(function () {
-	var query = this.value.toLowerCase();
-	var rows = $('#pokemon').find('tr');
-	if (query) {
-		rows.hide();
-		rows.filter(function (i, v) {
-			if ($(this).is(":contains('" + query + "')")) {
-				return true;
-			} else {
-				return false;
-			}
-		}).show();
-	} else {
-		rows.show();
-	}
+	
+	$('#search').keyup(function () {
+		var query = this.value.toLowerCase();
+		var rows = $('#pokemon').find('tr');
+		if (query) {
+			rows.hide();
+			rows.filter(function (i, v) {
+				if ($(this).is(':contains("' + query + '")')) {
+					return true;
+				} else {
+					return false;
+				}
+			}).show();
+		} else {
+			rows.show();
+		}
+	});
 });
