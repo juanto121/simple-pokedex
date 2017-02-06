@@ -1,21 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	   <meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-		<!--Import Google Icon Font-->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-		<!-- JQuery -->
-		<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
-
-		<!-- Compiled and minified CSS -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-
-		<!-- Compiled and minified JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+		<% include ../partials/head %>
 
 		<!-- Handlebars -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
@@ -23,32 +9,9 @@
 		<!-- Chosen -->
 		<script src="plugins/chosen/chosen.jquery.min.js"></script>
 		<link rel="stylesheet" href="plugins/chosen/chosen.min.css">
-
-		<link rel="stylesheet" href="css/custom.css">
-
-		<link rel='icon' href='favicon.ico' />
-
-		<title>Simple Pokédex</title>
 	</head>
 	<body>
-		<nav class="indigo darken-1">
-			<div class="container">
-				<div class="nav-wrapper">
-					<a href="index.html" class="brand-logo">Simple Pokédex</a>
-					<ul class="right hide-on-med-and-down">
-						<li><a href="pokedex.html">Explore Pokédex</a></li>
-						<li><a href="random_pokemon.html">Random Pokémon Team</a></li>
-						<li><a href="compare.html">Compare Pokémon</a></li>
-					</ul>
-					<ul class="side-nav" id="mobile-menu">
-						<li><a href="pokedex.html">Explore Pokédex</a></li>
-						<li><a href="random_pokemon.html">Random Pokémon Team</a></li>
-						<li><a href="compare.html">Compare Pokémon</a></li>
-					</ul>
-					<a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
-				</div>
-			</div>
-		</nav>
+		<% include ../partials/header %>
 
 		<main>
 			<div class="container" id="main">
@@ -95,27 +58,7 @@
 			</div>
 		</main>
 
-		<footer class="page-footer indigo">
-			<div class="container">
-				<div class="row">
-					<div class="col l6 s12">
-						<h5 class="white-text">Powered by the Pokéapi</h5>
-						<p class="grey-text text-lighten-4">
-							Check it out at <a href="http://pokeapi.co/" class="grey-text text-lighten-3" target="_blank">http://pokeapi.co/</a>
-						</p>
-					</div>
-					<div class="col l4 offset-l2 s12">
-						<h5 class="white-text">Find us on GitHub</h5>
-						<a class="grey-text text-lighten-3" href="https://github.com/jpvg95/simple-pokedex" target="_blank">GitHub Project</a>
-					</div>
-				</div>
-			</div>
-			<div class="footer-copyright">
-				<div class="container">
-					© Juan Pablo Valencia,
-				</div>
-			</div>
-		</footer>
+		<% include ../partials/footer %>
 		
 		<!-- Handlebars template -->
 		<script id="select-template" type="text/x-handlebars-template">			
@@ -171,7 +114,8 @@
 			{{/defenses}}
 		</script>
 
-		<script src="js/functions.js"></script>		
+		<% include ../partials/scripts %>
+		
 		<script src="js/compare.js"></script>
 	</body>
 </html>

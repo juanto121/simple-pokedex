@@ -3,12 +3,8 @@ $(document).ready(function () {
 
 	var currentTime = new Date();
 	var year = currentTime.getFullYear().toString();
-
-	if (year === '2016') {
-		$('.footer-copyright > .container').append('<span>2016</span>');
-	} else {
-		$('.footer-copyright > .container').append('<span>2016 - ' + year + '</span>');
-	}
+	
+	$('.footer-copyright > .container').append('<span>' + year + '</span>');
 });
 
 function getParameterByName(name) {
